@@ -1,4 +1,13 @@
+body {
+	background-image: url("https://github.com/paigepittman/TriviaGame/blob/master/assets/images/harry-potter-14.jpg?raw=true");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
 .header {
 	text-align: center;
-	
+	font-family: 'Asar', serif;
+	color: #DAA520;
+	font-size: 40px;
+
 }
