@@ -10,7 +10,7 @@ var questions = [ {
 		
 	},
 	{
-		quesiton: "What is the first Tri-Wizard Tournament Challenge?",
+		question: "What is the first Tri-Wizard Tournament Challenge?",
 		choices: ["dragons", "mermaids", "a maze", "a broomstick race"],
 		correct: "dragons"
 
@@ -71,14 +71,14 @@ window.onload = function() {
 
 	$("#question").html("How well do you know Harry Potter?");
 	$("#a").html("play and find out!");
-	$("#b").html("<button>Start</button>")
+	$("#b").html("<button>Start</button>");
 }
  
 
 function displayQuestion() {
 
-	if (count < questions.length) {
-	hideQuestion = setInterval(timeUp, 20000);
+	if (count < questions.length || 0) {
+	hideQuestion = setInterval(timeUp, 10000);
 	clearInterval(showQuestion);
 	$("#question").html(questions[count].question);
 	$("#a").html(questions[count].choices[0]);
@@ -86,7 +86,7 @@ function displayQuestion() {
 	$("#c").html(questions[count].choices[2]);
 	$("#d").html(questions[count].choices[3]);
 	
-	
+	console.log(questions[count].question);
 
 	}
 
@@ -113,23 +113,22 @@ function timeUp() {
 }
 
 
-
-
-
-
-
-
-
-
-// }
-
 $(".choice").click(function() {
 
 var correctAnswer = questions[count].correct;
 
 
 
-if ($(this).text() === correctAnswer) {
+if ($(this).text() === "Start") {
+
+	clearInterval(hideQuestion);
+	showQuestion = setInterval(displayQuestion, 1000);
+
+}
+
+
+
+else if ($(this).text() === correctAnswer) {
 
 	Points++;
 
@@ -145,15 +144,10 @@ if ($(this).text() === correctAnswer) {
 	$("#c").html("");
 	$("#d").html("");
 
-	
-
+	console.log("correct");
 
 }
 
-else if ($(this).text() === "Start") {
-
-	displayQuestion();
-}
 
 else {
 	count++;
@@ -173,43 +167,10 @@ else {
 }
 
 
-// console.log($(this).text());
-
 });
 
 
 
-
-
-
-
-
-		
-
-// function startGame() {
-
-// 	showQuestion = setInterval(nextQuestion, 20000);
-// 	intervalId = setInterval(decrement, 1000);
-
-
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//closing brackets
 });
 
 
