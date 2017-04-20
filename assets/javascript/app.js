@@ -51,6 +51,11 @@ var questions = [ {
 		choices: ["Barty Crouch Jr", "Draco Malfoy", "Peter Petigrew", "Igor Karkaroff"],
 		correct: "Barty Crouch Jr"
 	}
+	{
+		question: "What did Dumbledore leave Ron in his will?",
+		choices: ["The Tales of Beedle and the Bard", "A lighter", "The Invisibility Cloak", "a Snitch"],
+		correct: "A lighter"
+	}
 ]
 
 var showQuestion;
@@ -105,7 +110,7 @@ function timeUp() {
 	clearInterval(hideQuestion);
 	showQuestion = setInterval(displayQuestion, 3000);
 	$("#question").html("Time's up!")
-	$("#a").html("<img src='https://media.giphy.com/media/etHUmA91GfDS8/giphy.gif'>");
+	$("#a").html("<img src='https://media.giphy.com/media/720g7C1jz13wI/giphy.gif'>");
 	$("#b").html("");
 	$("#c").html("");
 	$("#d").html("");
