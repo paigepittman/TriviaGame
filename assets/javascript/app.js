@@ -50,7 +50,7 @@ var questions = [ {
 		question: "Who is impersonating Mad Eye Moody throughout Harry's fourth year?",
 		choices: ["Barty Crouch Jr", "Draco Malfoy", "Peter Petigrew", "Igor Karkaroff"],
 		correct: "Barty Crouch Jr"
-	}
+	},
 	{
 		question: "What did Dumbledore leave Ron in his will?",
 		choices: ["The Tales of Beedle and the Bard", "A lighter", "The Invisibility Cloak", "a Snitch"],
