@@ -6,143 +6,170 @@ var questions = [ {
 		//first index of each array is question, 2nd is an array of all possible choices, 3rd is correct answe
 		question: "What is Hagrid's dog's name?",
 		choices: ["Scabbers", "Fluffy", "Crookshanks", "Fang"],
-		correct: "Fang",
-		wrongGif: "<img src='https://media.giphy.com/media/NoBXm9gmqzx96/giphy.gif'>",
-		rightGif: "<img src='https://media.giphy.com/media/NoBXm9gmqzx96/giphy.gif'>"
+		correct: "Fang"
+		
 	},
 	{
 		quesiton: "What is the first Tri-Wizard Tournament Challenge?",
 		choices: ["dragons", "mermaids", "a maze", "a broomstick race"],
-		correct: "dragons",
-		wrongGif: "<img src='http://gph.is/1UPUTvl'>",
-		rightGif: "<img src='http://gph.is/1eQZqhI'>"
+		correct: "dragons"
+
 	},
 	{
 		question: "What is the Killing Curse?",
 		choices: ["Cruciatus Curse", "Imperius Curse", "Avada Kedavra", "Sectumsempra"],
-		correct: "Avada Kedavra",
-		wrongGif: "img src='http://gph.is/1UPUTvl'>",
-		rightGif: "<img src='http://gph.is/1eQZqhI'>"
+		correct: "Avada Kedavra"
 	},
 	{
 		question: "Which house commonroom does the Fat Lady guard?",
 		choices: ["Slytherin", "Gryfindor", "Hufflepuff", "Ravenclaw"],
-		correct: "Gryfindor",
-		wrongGif: "<img src='http://gph.is/1UPUTvl'>",
-		rightGif: "<img src='http://gph.is/1eQZqhI'>"
+		correct: "Gryfindor"
 	},
 	{
 		question: "Which spell erases memory?",
 		choices: ["Lumos Maxima", "Obliviate", "Petrificus Totalus", "Stupify"],
-		correct: "Obliviate",
-		wrongGif: "<img src='http://gph.is/1UPUTvl'>",
-		rightGif: "<img src='http://gph.is/1eQZqhI'>"
+		correct: "Obliviate"
 	},
 	{
 	 	question: "Who gives Harry the Marauder's Map?",
 		choices: ["Sirius", "Dumbledore", "Fred and George", "Lupin"],
-		correct: "Fred and George",
-		wrongGif: "<img src='http://gph.is/1UPUTvl'>",
-		rightGif: "<img src='http://gph.is/1eQZqhI'>"
+		correct: "Fred and George"
+		
 	},
 	{
 	 	question: "Who is the oldest Weasley child?",
 		choices: ["Ron", "Charlie", "Percy", "Bill"],
-		correct: "Bill",
-		wrongGif: "<img src='http://gph.is/1UPUTvl'>",
-		rightGif: "<img src='http://gph.is/1eQZqhI'>"
+		correct: "Bill"
 	},
 	{
 		question: "Whose Gringot's vault do Harry, Ron and Hermoine break into?",
 		choices: ["Snape's", "Grindlewald's", "Bellatrix's", "Lucious's"],
-		correct: "Bellatrix's",
-		wrongGif: "<img src='http://gph.is/1UPUTvl'>",
-		rightGif: "<img src='http://gph.is/1eQZqhI'>"
+		correct: "Bellatrix's"
 	},
 	{ 
 		question: "Who is impersonating Mad Eye Moody throughout Harry's fourth year?",
 		choices: ["Barty Crouch Jr", "Draco Malfoy", "Peter Petigrew", "Igor Karkaroff"],
-		correct: "Barty Crouch Jr",
-		wrongGif: "<img src='http://gph.is/1UPUTvl'>",
-		rightGif: "<img src='http://gph.is/1eQZqhI'>"
+		correct: "Barty Crouch Jr"
 	}
 ]
 
 var showQuestion;
 
-var count = 0;
+var hideQuestion;
 
-var correctAnswer = questions[count].correct;
+var count = 0;
 
 var userChoice = "";
 
 var Points = 0;
 
+var timer = 20;
 
+var setIntervalId;
+
+window.onload = function() {
+
+	$("#question").html("How well do you know Harry Potter?");
+	$("#a").html("play and find out!");
+	$("#b").html("<button>Start</button>")
+}
  
 
 function displayQuestion() {
 
+	if (count < questions.length) {
+	hideQuestion = setInterval(timeUp, 20000);
+	clearInterval(showQuestion);
 	$("#question").html(questions[count].question);
-
-}
-
-function displayChoices() {
-
 	$("#a").html(questions[count].choices[0]);
 	$("#b").html(questions[count].choices[1]);
 	$("#c").html(questions[count].choices[2]);
 	$("#d").html(questions[count].choices[3]);
 	
-
 	
 
-
-}
-function nextQuestion() {
-
-	count++;
-
-	setTimeout(displayQuestion, 15000);
-
-	if (count === questions.length) {
-
-		count = 0;
 	}
 
-	if ()
+	else {
+		clearInterval(showQuestion);
+		clearInterval(hideQuestion);
+		$("#question").html("You're a wizard, Harry!");
+		$("#choices").html(Points + "/10<br>" + "<img src='https://media.giphy.com/media/qLHzYjlA2FW8g/giphy.gif'>");
+
+	}
 
 }
 
+function timeUp() {
+	count++;
+	clearInterval(hideQuestion);
+	showQuestion = setInterval(displayQuestion, 3000);
+	$("#question").html("Time's up!")
+	$("#a").html("<img src='https://media.giphy.com/media/etHUmA91GfDS8/giphy.gif'>");
+	$("#b").html("");
+	$("#c").html("");
+	$("#d").html("");
+	
+}
+
+
+
+
+
+
+
+
+
+
+// }
+
 $(".choice").click(function() {
+
+var correctAnswer = questions[count].correct;
+
 
 
 if ($(this).text() === correctAnswer) {
 
 	Points++;
 
+	count++;
+
+	clearInterval(hideQuestion);
+	showQuestion = setInterval(displayQuestion, 3000);
+
 	$("#question").html("Correct!");
 
-	$("#choices").html(questions[count].rightGif);
+	$("#a").html("<img src='https://media.giphy.com/media/PYoiPtqNfvc88/giphy.gif'>");
+	$("#b").html("");
+	$("#c").html("");
+	$("#d").html("");
 
-	nextQuestion();
+	
+
+
+}
+
+else if ($(this).text() === "Start") {
 
 	displayQuestion();
-
-	displayChoices();
 }
 
 else {
+	count++;
+	clearInterval(hideQuestion);
+
+	showQuestion = setInterval(displayQuestion, 3000);
 
 	$("#question").html("Wrong!");
 
-	$("#choices").html(questions[count].wrongGif);
+	$("#a").html("<img src='https://media.giphy.com/media/AisOYaOZdrS1i/giphy.gif'>");
+	$("#b").html("");
+	$("#c").html("");
+	$("#d").html("");
 
-	nextQuestion();
+	
 
-	displayQuestion();
-
-	displayChoices();
 }
 
 
@@ -159,16 +186,16 @@ else {
 
 		
 
-function startGame() {
+// function startGame() {
 
-	showQuestion = setInterval(nextQuestion, 15000);
+// 	showQuestion = setInterval(nextQuestion, 20000);
+// 	intervalId = setInterval(decrement, 1000);
 
 
-}
+// }
 
-displayQuestion();
 
-displayChoices();
+
 
 
 

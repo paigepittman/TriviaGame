@@ -11,3 +11,39 @@ body {
 	font-size: 40px;
 
 }
+
+#question {
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 20px;
+	background-color: white;
+	opacity: .7;
+	width: 700px;
+	height: 100px;
+	text-align: center;
+	color: black;
+	font-family: 'Source Sans Pro';
+	font-size: 20px;
+
+}
+
+#choices {
+	margin-left: auto;
+	margin-right: auto;
+	background-color: white;
+	opacity: .7;
+	width: 700px;
+	height: 350px;
+	text-align: center;
+	color: black;
+	font-family: 'Source Sans Pro';
+
+}
+
+.choice {
+	margin-bottom: 10px;
+	}
+
+image {
+	opacity: 1;
+}
